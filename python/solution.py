@@ -1,8 +1,11 @@
+import os
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
+nltk.download('stopwords')
+nltk.download('punkt')
 import rabin_karp
 import numpy as np
 from os.path import dirname, join
@@ -25,14 +28,14 @@ class PlagiarismChecker:
     def calculate_hash(self, content, doc_type):
         text = self.prepare_content(content)
         text = "".join(text)
-        print(text)
+        # print(text)
 
         text = rabin_karp.rolling_hash(text, self.k_gram)
         for _ in range(len(content) - self.k_gram + 1):
             self.hash_table[doc_type].append(text.hash)
             if text.next_window() == False:
                 break
-        print(self.hash_table)
+        # print(self.hash_table)
 
     def get_rate(self):
         return self.calaculate_plagiarism_rate(self.hash_table)
@@ -45,7 +48,7 @@ class PlagiarismChecker:
         b = hash_table["b"]
         sh = len(np.intersect1d(a, b))
         # print(sh, a, b)
-        print(sh, th_a, th_b)
+        # print(sh, th_a, th_b)
 
         # Formular for plagiarism rate
         # P = (2 * SH / THA * THB ) 100%
@@ -77,11 +80,13 @@ class PlagiarismChecker:
 
 
 current_dir = dirname(__file__)
+files_entries = os.listdir("plagiarism-checker/docs")
+path_files = '../docs/' + files_entries[0]
+path_files1 = '../docs/' + files_entries[1]
+
 checker = PlagiarismChecker(
-    join(current_dir, "../docs/document_a.txt"),
-    join(current_dir, "../docs/document_b.txt")
-
-
+    join(current_dir, path_files),
+    join(current_dir, path_files1)
 )
-print('The percentage of plagiarism held by both documents is  {0}%'.format(
+print('The percentage of plagiarism held by both documents is {0}%'.format(
     checker.get_rate()))
