@@ -8,6 +8,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 import rabin_karp
 import numpy as np
+import json
 from os.path import dirname, join
 import re
 
@@ -81,12 +82,46 @@ class PlagiarismChecker:
 
 current_dir = dirname(__file__)
 files_entries = os.listdir("plagiarism-checker/docs")
-path_files = '../docs/' + files_entries[0]
-path_files1 = '../docs/' + files_entries[1]
 
-checker = PlagiarismChecker(
-    join(current_dir, path_files),
-    join(current_dir, path_files1)
-)
-print('The percentage of plagiarism held by both documents is {0}%'.format(
-    checker.get_rate()))
+record = []
+maximum = []
+i = 0
+while i < len(files_entries) - 1:
+    temp = []
+    j = i + 1
+    while j < len(files_entries):
+        path_files = '../docs/' + files_entries[i]
+        path_files1 = '../docs/' + files_entries[j]
+        checker = PlagiarismChecker(
+            join(current_dir, path_files),
+            join(current_dir, path_files1)
+        )
+        iteration = {
+            "iteration": i + 1,
+            "data1": path_files,
+            "data2": path_files1,
+            "precentage": '{:6.2f}%'.format(checker.get_rate())
+        }
+        j += 1
+        temp.append(iteration)
+        record.append(iteration)
+    max = temp[0]["precentage"]
+    for x in temp:
+        if x["precentage"] > max:
+            data_1 = x["data1"]
+            data_2 = x["data2"]
+            max = x["precentage"]
+    
+    maximum.append({
+        "data1": data_1,
+        "data2": data_2,
+        "precentage": max
+    })
+
+    i += 1
+
+print("Ini json record \n")
+print(json.dumps(record, indent = 4))
+
+print("Ini list max \n")
+print(json.dumps(maximum, indent = 4))
