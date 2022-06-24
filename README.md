@@ -3,3 +3,6 @@ Repository ini adalah project skripsi saya yang mana pada project ini saya membu
 
 ## Lingkupan
 Pengecekan plagiarismenya sendiri berada pada lingkupan kelas yaitu pengecekan tugas individu siswa dalam lingkup kelas saja
+
+## API
+api url <http://127.0.0.1:5000/api/testing>
