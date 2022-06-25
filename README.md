@@ -6,3 +6,12 @@ Pengecekan plagiarismenya sendiri berada pada lingkupan kelas yaitu pengecekan t
 
 ## API
 API flask url Post <http://127.0.0.1:5000/api/testing>
+
+## Updates
+1. Converting file from .docx into .txt
+2. File cutting dengan Regex
+
+## Next Objectives
+1. Membuat database apabila diperlukan
+2. Membuat atau rekonstruksi tampilan pada figma <https://www.figma.com/file/uAUOzqwvWXIhog6xH3V7GV/Skripsi?node-id=0%3A1>
+3. Membuat tampilan dengan react.js
