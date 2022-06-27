@@ -58,7 +58,7 @@ class PlagiarismChecker:
 
     # get content from file
     def get_file_content(self, filename):
-        file = open(filename, 'r+', encoding="utf-8")
+        file = open(filename, 'r+')
         return file.read()
 
     # Prepare content by removing stopwords, steemming and tokenizing
@@ -81,7 +81,7 @@ class PlagiarismChecker:
 
 
 current_dir = dirname(__file__)
-files_entries = os.listdir("plagiarism-checker/docs")
+files_entries = os.listdir("plagiarism-checker/docs/txt/")
 
 record = []
 maximum = []
@@ -90,8 +90,8 @@ while i < len(files_entries) - 1:
     temp = []
     j = i + 1
     while j < len(files_entries):
-        path_files = '../docs/' + files_entries[i]
-        path_files1 = '../docs/' + files_entries[j]
+        path_files = '../docs/txt/' + files_entries[i]
+        path_files1 = '../docs/txt/' + files_entries[j]
         checker = PlagiarismChecker(
             join(current_dir, path_files),
             join(current_dir, path_files1)
@@ -111,14 +111,14 @@ while i < len(files_entries) - 1:
             data_1 = x["data1"]
             data_2 = x["data2"]
             max = x["precentage"]
-    
-    maximum.append({
-        "data1": data_1,
-        "data2": data_2,
-        "precentage": max
-    })
 
-    i += 1
+            maximum.append({
+                "data1": data_1,
+                "data2": data_2,
+                "precentage": max
+            })
+
+        i += 1
 
 print("Ini json record \n")
 print(json.dumps(record, indent = 4))

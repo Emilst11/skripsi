@@ -1,27 +1,48 @@
+from importlib.resources import path
+from pathlib import Path
 import os
 import docx2txt
 import json
 import re
 
-file_path = os.listdir("plagiarism-checker/docs")
-path = "plagiarism-checker/docs/Laporan_Magang_Emil_Setiawan.docx"
-txt = docx2txt.process(path)
-data = []
-f = open('plagiarism-checker/docs/' + file_path[4], 'r')
-text = f.read()
+data_text = []
 
-def cuttingFiles(files, file_text):
+file_load = os.listdir("plagiarism-checker/docs/words/")
+path_load = "plagiarism-checker/docs/words/"
 
-    new_text = re.search("(?!\+)\s\s(PENDAHULUAN)([\s\S]*)(?=\sDAFTAR\sPUSTAKA)", file_text)
-    x = new_text.group()
-    # stores = {
-    #     "name" : files,
-    #     "text" : file_text
-    # }
+file_save = os.listdir("plagiarism-checker/docs/txt/")
+path_save = "plagiarism-checker/docs/txt/"
 
-    # data.append(stores)
-    return x
+def files_name(name):
+    split_name = name.split("/")
+    txt_name = split_name[len(split_name)-1].split(".")
+    new_name = re.sub("\s", '_', txt_name[0])
+    return new_name
 
-# cuttingFiles(file_path[4], text)
-# print(json.dumps(data, indent = 4))
-print(cuttingFiles(file_path[4], text))
+def cuttingFiles(file_name, file_text):
+    entry = re.search("(?!\+)\s\s(PENDAHULUAN)([\s\S]*)(?=\sDAFTAR\sPUSTAKA)", file_text)
+    results = entry.group()
+    string = re.sub("\s\s+", ' ', results)
+    new = files_name(file_name)
+    location = path_save + new
+
+    path = Path(location + ".txt")
+    if path.is_file():
+        print("exist")
+    else:
+        f = open(location + ".txt", 'w')
+        f.write(string)
+        f.close()
+        store = {
+            "name" : new,
+            "location" : location + ".txt"
+        }
+
+        data_text.append(store)
+
+
+for x in file_load:
+    convertTotxt = docx2txt.process(path_load + x)
+    cuttingFiles(path_load + x, convertTotxt)
+
+print(json.dumps(data_text, indent = 4))
