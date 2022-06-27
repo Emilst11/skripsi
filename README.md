@@ -8,8 +8,7 @@ Pengecekan plagiarismenya sendiri berada pada lingkupan kelas yaitu pengecekan t
 API flask url Post <http://127.0.0.1:5000/api/testing>
 
 ## Updates
-1. Converting file from .docx into .txt
-2. File cutting dengan Regex
+1. Update filecutting dan menempatkan spasi pada text file agar tidak terjadinya berlebihan spasi atau enter
 
 ## Next Objectives
 1. Membuat database apabila diperlukan
