@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
+
+.navbar{
+    background-color: #232323;
+    padding: 0;
+    width: 100%;
+}
+.logo{
+    font-family: Big Shoulders Display;
+    margin: 0;
+    font-size: 2rem;
+    color: #DAA488;
+}
