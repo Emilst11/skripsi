@@ -9,7 +9,7 @@ API flask url Post
 <>http://127.0.0.1:5000/api/uploader<>
 
 ## Updates
-1. Update filecutting dan menempatkan spasi pada text file agar tidak terjadinya berlebihan spasi atau enter
+1. Update react.js front-end. fetching api from python and cors fixed at myapiapp
 
 ## Next Objectives
 1. Membuat database apabila diperlukan
