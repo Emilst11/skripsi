@@ -15,9 +15,8 @@ class FormUpload extends React.Component{
         try {
         axios.post('http://127.0.0.1:5000/api/uploader', formData)
         .then(res => {
-            const records = res.data
-            console.log(records)
-            this.setState({records})
+            const data = res.data
+            this.setState({records: data})
         });
         }
         catch(error) {
@@ -33,6 +32,7 @@ class FormUpload extends React.Component{
         })
     }
     render(){
+        const { records, selectedFile } = this.state
         return(
             <div className="w-1/2 min-w-[800px] mx-auto py-10">
                 <div className="border-b-2 border-[#535353] pb-5">
@@ -43,12 +43,12 @@ class FormUpload extends React.Component{
                             <label htmlFor="formUpload" className="w-full h-full flex justify-center items-center">Click Here in Choose ZIP file</label>
                         </div>
                         <div className="flex justify-between items-center mt-5">
-                            <h2 id="namefiles"></h2>
+                            <h2 id="namefiles">{selectedFile.name}</h2>
                             <button className="w-1/4 bg-[#2FC58D] py-3 rounded-xl" type="submit">Upload Files</button>
                         </div>
                     </form>
                 </div>
-                <ListItems/>
+                <ListItems data={records}/>
             </div>
         )
     }

@@ -24,22 +24,20 @@ def uploader():
     items = os.listdir(UPLOAD_FOLDER)
 
     if len(items) != None:
-        filecutting.runfilecutting()
-        records = solution.processing()
-
-        return jsonify(record = records)
-    else:
         with zipfile.ZipFile(UPLOAD_FOLDER + items[0], "r") as zip_ref:
             zip_ref.extractall("plagiarism-checker/docs/words/")
         
         for x in items:
             os.remove(UPLOAD_FOLDER + x)
+            
         filecutting.runfilecutting()
         records = solution.processing()
 
-        return jsonify(record = {records})
+        return jsonify(record = records)
+    else:
+        filecutting.runfilecutting()
+        records = solution.processing()
+        return jsonify(records)
     
-
-
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(port=5000, debug = True)

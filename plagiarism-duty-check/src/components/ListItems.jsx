@@ -1,8 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
 import Items from "./Items";
 
-const ListItems = () => {
-    const [datas, setDatas] = useState([])
+const ListItems = ({data}) => {
+    const comp = () =>{
+        if(data.length === 0){
+            return(
+                <h2>No item list</h2>
+            )
+        }else{
+            return(
+                data.record.map(item =>
+                    <Items
+                    data={item}
+                    />
+                    )
+            )
+        }
+    }
     return(
         <div className="w-full min-w-[800px] m-auto py-5">
             <h1>List files</h1>
@@ -11,11 +25,7 @@ const ListItems = () => {
                 <button className="bg-[#F8AC66] rounded-xl w-1/6">Find</button>
             </div>
             <div>
-                {datas.map(item => 
-                    <Items key={item.id}
-                    data={item}
-                    />
-                )}
+                {comp()}
             </div>
         </div>
     )

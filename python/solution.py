@@ -4,8 +4,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
-nltk.download('stopwords')
-nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('punkt')
 import rabin_karp
 import numpy as np
 import json
@@ -80,7 +80,6 @@ def processing():
     record = []
     i = 0
     while i < len(files_entries):
-        temp = []
         j = i + 1
         while j < len(files_entries):
             path_files = '../docs/txt/' + files_entries[i]
@@ -89,14 +88,13 @@ def processing():
                 join(current_dir, path_files),
                 join(current_dir, path_files1)
             )
-            temp.append({
+            temp = {
                 "iteration": i + 1,
-                "data1": path_files,
-                "data2": path_files1,
+                "data1": files_entries[i],
+                "data2": files_entries[j],
                 "precentage": '{:6.2f}%'.format(checker.get_rate())
-            })
-            j += 1
+            }
             record.append(temp)
-
+            j += 1
         i += 1
     return record
