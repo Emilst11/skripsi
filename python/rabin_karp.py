@@ -55,4 +55,4 @@ def checker(text, pattern):
 
 
 if __name__ == "__main__":
-    print(checker("ABDCCEAGmsslslsosspps", "agkalallaa"))
+    print(checker("Helloworld", "owo"))

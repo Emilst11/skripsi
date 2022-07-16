@@ -11,6 +11,7 @@ const ListItems = ({data}) => {
             return(
                 data.record.map(item =>
                     <Items
+                    key ={item.iteration}
                     data={item}
                     />
                     )

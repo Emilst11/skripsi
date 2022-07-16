@@ -45,6 +45,9 @@ class PlagiarismChecker:
         a = hash_table["a"]
         b = hash_table["b"]
         sh = len(np.intersect1d(a, b))
+        print(sh)
+        print(th_a)
+        print(th_b)
 
         # Formular for plagiarism rate
         p = (float(2 * sh)/(th_a + th_b)) * 100
@@ -75,29 +78,12 @@ class PlagiarismChecker:
 
 def processing():
     current_dir = dirname(__file__)
-    files_entries = os.listdir("plagiarism-checker/docs/txt/")
-    record = []
-    i = 0
-    while i < len(files_entries)-1:
-        data = []
-        j = i + 1
-        while j < len(files_entries):
-            path_files = '../docs/txt/' + files_entries[i]
-            path_files1 = '../docs/txt/' + files_entries[j]
-            checker = PlagiarismChecker(
-                join(current_dir, path_files),
-                join(current_dir, path_files1)
-            )
-            temp = {
-                "compared": files_entries[j],
-                "precentage": '{:6.2f}%'.format(checker.get_rate())
-            }
-            j += 1
-            data.append(temp)
-        record.append({
-            "iteration" : i+1,
-            "document": files_entries[i],
-            "datas": data
-        })
-        i += 1
-    return record
+    checker = PlagiarismChecker(
+        join(current_dir, "../docs/document_a.txt"),
+        join(current_dir, "../docs/document_b.txt")
+    )
+
+    message = "presentase plagiasi adalah" + '{:6.2f}%'.format(checker.get_rate())
+    return message
+
+print(processing())

@@ -49,6 +49,20 @@ class FormUpload extends React.Component{
                     </form>
                 </div>
                 <ListItems data={records}/>
+                <div className="absolute left-10 top-[100px]">
+                    <div className="flex gap-5 items-center my-5">
+                        <div className="rounded-full bg-[#2FC58D] w-[15px] h-[15px]"></div>
+                        <div>Plagiasi Ringan. (Dibawah 30%)</div>
+                    </div>
+                    <div className="flex gap-5 items-center my-5">
+                        <div className="rounded-full bg-[#F7C934] w-[15px] h-[15px]"></div>
+                        <div>Plagiasi Sedang. (30% sampai 70%)</div>
+                    </div>
+                    <div className="flex gap-5 items-center my-5">
+                        <div className="rounded-full bg-[#F05E70] w-[15px] h-[15px]"></div>
+                        <div>Plagiasi Berat. (Lebih 70%)</div>
+                    </div>
+                </div>
             </div>
         )
     }
