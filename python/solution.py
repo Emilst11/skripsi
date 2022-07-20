@@ -17,7 +17,7 @@ class PlagiarismChecker:
         self.file_a = file_a
         self.file_b = file_b
         self.hash_table = {"a": [], "b": []}
-        self.k_gram = 5
+        self.k_gram = 7
         content_a = self.get_file_content(self.file_a)
         content_b = self.get_file_content(self.file_b)
         self.calculate_hash(content_a, "a")
@@ -52,7 +52,7 @@ class PlagiarismChecker:
 
     # get content from file
     def get_file_content(self, filename):
-        file = open(filename, 'r+')
+        file = open(filename, 'r+', encoding="utf-8")
         return file.read()
 
     # Prepare content by removing stopwords, steemming and tokenizing

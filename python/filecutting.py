@@ -30,7 +30,7 @@ def cuttingFiles(file_name, file_text):
         if path.is_file():
             print("exist")
         else:
-            f = open(location + ".txt", 'w')
+            f = open(location + ".txt", 'w', encoding="utf-8")
             f.write(entry)
             f.close()
             store = {
@@ -41,7 +41,7 @@ def cuttingFiles(file_name, file_text):
             data_text.append(store)
     except AttributeError:
         store = {
-            "name" : file_text,
+            "name" : file_name,
             "status" : "Error"
         }
         data_text.append(store)
