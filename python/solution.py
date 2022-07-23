@@ -75,7 +75,7 @@ class PlagiarismChecker:
 
 def processing():
     current_dir = dirname(__file__)
-    files_entries = os.listdir("plagiarism-checker/docs/txt/")
+    files_entries = os.listdir("./docs/txt/")
     record = []
     i = 0
     while i < len(files_entries)-1:

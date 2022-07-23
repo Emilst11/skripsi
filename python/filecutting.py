@@ -6,11 +6,11 @@ import re
 import json
 
 data_text = []
-file_load = os.listdir("plagiarism-checker/docs/words/")
-path_load = "plagiarism-checker/docs/words/"
+file_load = os.listdir("./docs/words/")
+path_load = "./docs/words/"
 
-file_save = os.listdir("plagiarism-checker/docs/txt/")
-path_save = "plagiarism-checker/docs/txt/"
+file_save = os.listdir("./docs/txt/")
+path_save = "./docs/txt/"
 
 def files_name(name):
     split_name = name.split("/")
@@ -20,8 +20,8 @@ def files_name(name):
 
 def cuttingFiles(file_name, file_text):
     pattern = "(PENDAHULUAN\sLatar)([\s\S]*)(?=\sDAFTAR\sPUSTAKA)"
+    string = re.sub("\s\s+", ' ', file_text)
     try:
-        string = re.sub("\s\s+", ' ', file_text)
         entry = re.search(pattern, string).group()
         new = files_name(file_name)
         location = path_save + new
@@ -40,15 +40,35 @@ def cuttingFiles(file_name, file_text):
 
             data_text.append(store)
     except AttributeError:
+        # entry = re.search("(PENDAHULUAN\sLatar)([\s\S]*)", string).group()
+        # new = files_name(file_name)
+        # location = path_save + new
+
+        # path = Path(location + ".txt")
+        # if path.is_file():
+        #     print("exist")
+        # else:
+        #     f = open(location + ".txt", 'w', encoding="utf-8")
+        #     f.write(entry)
+        #     f.close()
+        #     store = {
+        #         "name" : new,
+        #         "status" : "Success"
+        #     }
         store = {
             "name" : file_name,
-            "status" : "Error"
+            "status" : "error"
         }
+
         data_text.append(store)
     
 
 def runfilecutting():
+    # convertTotxt = docx2txt.process("plagiarism-checker/docs/words/201831198_AS.  Suci Asriana_Laporan Magang_proses_fix.docx")
+    # cuttingFiles("plagiarism-checker/docs/words/201831198_AS.  Suci Asriana_Laporan Magang_proses_fix.docx", convertTotxt)
     for x in file_load:
         convertTotxt = docx2txt.process(path_load + x)
         cuttingFiles(path_load + x, convertTotxt)
     return data_text
+
+print(runfilecutting())

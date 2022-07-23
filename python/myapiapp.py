@@ -7,7 +7,7 @@ import solution
 
 app = Flask (__name__)
 CORS(app)
-UPLOAD_FOLDER = 'plagiarism-checker/python/upload_zip/'
+UPLOAD_FOLDER = 'python/upload_zip/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
