@@ -10,7 +10,11 @@ const Navbar = () => {
                 <a href="">About</a>
                 <a href="">Help</a>
             </div>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-5 items-center">
+                <p>Admin</p>
+                <div className={circle + " bg-[#FFF]"}></div>
+            </div> */}
+             <div className="flex gap-3">
                 <div className={circle + " bg-[#F05E70]"}></div>
                 <div className={circle + " bg-[#F7C934]"}></div>
                 <div className={circle + " bg-[#2FC58D]"}></div>

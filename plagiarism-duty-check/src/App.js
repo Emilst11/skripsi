@@ -1,12 +1,10 @@
-import FormUpload from "./components/FormUpload";
-import Navbar from "./components/Navbar";
 import "./styles/app.css";
+import Register from "./view/Register";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <FormUpload/>
+      <Register/>
     </div>
   );
 }

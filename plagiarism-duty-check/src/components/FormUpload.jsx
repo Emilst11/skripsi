@@ -1,14 +1,19 @@
 import React from "react";
 import axios from 'axios';
 import ListItems from "./ListItems";
+import SearchForm from "./SearchForm";
 
 class FormUpload extends React.Component{
     state = {
         records: [],
-        selectedFile: {}
+        selectedFile: {},
+        open: true
     }
     handleSubmit = (event) => {
         event.preventDefault()
+        this.setState({
+            open: true
+        })
         const formData = new FormData();
         formData.append("file", this.state.selectedFile);
         console.log(formData)
@@ -31,22 +36,45 @@ class FormUpload extends React.Component{
             console.log(this.state.selectedFile)
         })
     }
+
     render(){
-        const { records, selectedFile } = this.state
+        const { records, selectedFile, open } = this.state
         return(
             <div className="w-1/2 min-w-[800px] mx-auto py-10">
-                <div className="border-b-2 border-[#535353] pb-5">
-                    <h1 className="mb-5">Upload File Project</h1>
-                    <form className="w-full" onSubmit={this.handleSubmit}>
-                        <input type="file" hidden id="formUpload" name="file" onChange={this.handleFileSelect}/>
-                        <div className={box}>
-                            <label htmlFor="formUpload" className="w-full h-full flex justify-center items-center">Click Here in Choose ZIP file</label>
+                <div className="border-[#535353] pb-5">
+                    <h1 className="mb-5">List Files</h1>
+                    <div className="flex justify-between">
+                        <SearchForm/>
+                        <button className="w-1/4 bg-[#2FC58D] rounded-xl" onClick={() => this.setState({open: false})}>Upload Form</button>
+                    </div>
+                    <div className={`${open ? "hidden" : "absolute"} + ${formContainer}`}>
+                        <div className="flex justify-between mb-5">
+                            <h1>Add New Folder</h1>
+                            <button onClick={() => this.setState({open: true})}>X</button>
                         </div>
-                        <div className="flex justify-between items-center mt-5">
-                            <h2 id="namefiles">{selectedFile.name}</h2>
-                            <button className="w-1/4 bg-[#2FC58D] py-3 rounded-xl" type="submit">Upload Files</button>
-                        </div>
-                    </form>
+                        <form className="w-full" onSubmit={this.handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="periode" className="block mb-3">Periode</label>
+                                <select name="periode" id="periode" className={formQuis}>
+                                    <option value="ganjil">Ganjil</option>
+                                    <option value="genap">Genap</option>
+                                </select>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="tahun" className="block mb-3">Tahun</label>
+                                <input type="text" className={formQuis} placeholder="Tahun"/>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="formUpload" className="block mb-3">Upload Folder</label>
+                                <input type="file" hidden id="formUpload" name="file" onChange={this.handleFileSelect}/>
+                                <div className={box}>
+                                    <label htmlFor="formUpload" className="w-full h-full flex justify-center items-center">Click Here in Choose ZIP file</label>
+                                </div>
+                            </div>
+                            <h2 className="mb-3">{selectedFile.name}</h2>
+                            <button className="w-full bg-[#2FC58D] py-3 rounded-xl" type="submit">Upload Files</button>
+                        </form>
+                    </div>
                 </div>
                 <ListItems data={records}/>
             </div>
@@ -56,4 +84,6 @@ class FormUpload extends React.Component{
 
 export default FormUpload
 
-const box = "text-[#535353] w-full h-[20vh] bg-[#191919] border border-[#535353] flex rounded-xl"
+const formContainer = "w-1/5 bg-[#232323] px-5 py-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl"
+const formQuis = "text-[#535353] w-full bg-[#232323] border border-[#535353] flex rounded-xl p-3 block"
+const box = "text-[#535353] w-full h-[20vh] border border-[#535353] flex rounded-xl border-dashed"
