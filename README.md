@@ -11,51 +11,12 @@ API flask url Post
 ## Figma
 <https://www.figma.com/file/uAUOzqwvWXIhog6xH3V7GV/Skripsi?node-id=0%3A1>
 
+## Must Install
+1. React-router-dom
+2. axios
+
 ## Updates
-1. Frontend konek, backend konek
-2. React sudah berjalan
+1. All routes
 
 ## Next Objectives
-1. Return json dengan format dibawah ini
-    record: [
-        {
-            iteration: 1,
-            result: [
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                },
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                },
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                }
-            ]
-        },
-        {
-            iteration: 2,
-            result: [
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                },
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                },
-                {
-                    data1: abcdefgh,
-                    data2, absedaada,
-                    presentase: 50
-                }
-            ]
-        }
-    ]
+1. Search params react routing
