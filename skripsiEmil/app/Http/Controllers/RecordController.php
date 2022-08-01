@@ -31,7 +31,7 @@ class RecordController extends Controller
             }
         }
 
-        $Record = Record::with('child','user')->where('id_user',$user->id)->where('period', $request->period)->where('years', $request->year)->get();
+        $Record = Record::with('data','user')->where('id_user',$user->id)->where('period', $request->period)->where('years', $request->year)->get();
         return response()->json([
             'success' => true,
             'record' => $Record
@@ -40,7 +40,7 @@ class RecordController extends Controller
     public function get_all(Request $request)
     {
         $user = auth()->user();
-        $Record = Record::with('child','user')->where('id_user',$user->id)->get();
+        $Record = Record::with('data','user')->where('id_user',$user->id)->get();
         return $Record;
     }
 }

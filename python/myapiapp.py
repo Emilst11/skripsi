@@ -17,6 +17,8 @@ def main():
 
 @app.route('/api/uploader', methods=['POST'])
 def uploader():
+    period = request.form['period']
+    year = request.form['year']
     file = request.files['file']
     if file:
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
@@ -25,7 +27,7 @@ def uploader():
 
     if len(items) != None:
         with zipfile.ZipFile(UPLOAD_FOLDER + items[0], "r") as zip_ref:
-            zip_ref.extractall("plagiarism-checker/docs/words/")
+            zip_ref.extractall("docs/words")
         
         for x in items:
             os.remove(UPLOAD_FOLDER + x)
@@ -37,7 +39,7 @@ def uploader():
     else:
         filecutting.runfilecutting()
         records = solution.processing()
-        return jsonify(records)
+        return jsonify(period, year, records)
     
 if __name__ == '__main__':
     app.run(port=5000, debug = True)

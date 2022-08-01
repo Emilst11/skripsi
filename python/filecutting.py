@@ -69,6 +69,7 @@ def runfilecutting():
     for x in file_load:
         convertTotxt = docx2txt.process(path_load + x)
         cuttingFiles(path_load + x, convertTotxt)
+        os.remove(path_load + x)
     return data_text
 
 print(runfilecutting())

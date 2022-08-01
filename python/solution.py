@@ -97,7 +97,9 @@ def processing():
         record.append({
             "iteration" : i+1,
             "document": files_entries[i],
-            "datas": data
+            "data": data
         })
         i += 1
+    for x in files_entries:
+        os.remove("./docs/txt/" + x)
     return record

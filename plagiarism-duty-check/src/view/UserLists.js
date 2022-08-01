@@ -26,7 +26,6 @@ const UserList = () => {
     )
     return(
         <div>
-            <Navbar/>
             <div className="w-1/2 min-w-[800px] mx-auto py-10">
                 <h1 className="mb-5">List Users</h1>
                 <SearchForm/>

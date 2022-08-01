@@ -11,7 +11,7 @@ class Record extends Model
     protected $table = 'record';
     protected $fillable = ['name_file','iteration','period','years','id_user'];
 
-    public function child()
+    public function data()
     {
         return $this->hasMany(RecordChild::class, 'id_record', 'id');
     }

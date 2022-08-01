@@ -9,10 +9,10 @@ const ListItems = ({data}) => {
             )
         }else{
             return(
-                data.record.map(item =>
+                data.map(item =>
                     <Items
-                    key ={item.iteration}
-                    data={item}
+                    key ={item.id}
+                    record={item}
                     />
                     )
             )
