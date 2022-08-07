@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 .login{
-    min-height: 100vh;
+    min-height: 90vh;
     background: url("bg-login.png") no-repeat center;
     background-size: 100%;
 }

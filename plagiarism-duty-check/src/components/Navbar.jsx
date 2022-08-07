@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css"
@@ -23,8 +24,22 @@ const Navbar = ( { data } ) => {
         }
     ]
 
+    const URL_Logout = "http://127.0.0.1:8000/api/auth/logout?token="
+
     const logoutBtn = () => {
-        sessionStorage.clear()
+        const token_auth = sessionStorage.getItem("token")
+        try{
+            axios.post(URL_Logout + token_auth)
+            .then(() => {
+                console.log("Logout berhasil")
+                sessionStorage.clear()
+                window.location.href = "/"
+            })
+        }catch (error){
+            console.error();
+        }
+        
+
     }
     
     const role = (items) =>{
@@ -61,7 +76,7 @@ const Navbar = ( { data } ) => {
                     <p>{user.name}</p>
                     <div className={circle + " bg-[#FFF] cursor-pointer"} onClick={() => setLogout(!logout)}>
                         <div className={`${logout ? "hidden" : "block"} absolute w-[100px] top-[50px] right-[20px] bg-[#232323] p-5 text-center`}>
-                            <Link to={`/`} onClick={logoutBtn}>Logout</Link>
+                            <button onClick={logoutBtn}>Logout</button>
                         </div>
                     </div>
                 </div>

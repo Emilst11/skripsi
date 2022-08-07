@@ -34,6 +34,7 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::get('list-user', 'AuthController@list_user');
     Route::post('register', 'AuthController@register');
     Route::post('record/store', 'RecordController@store');
     Route::get('record/get-all', 'RecordController@get_all');

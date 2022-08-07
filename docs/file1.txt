@@ -1,0 +1,3 @@
+Kesimpulan dari perhitungan uji akurasi diatas yaitu, penerapan algoritma rabin karp untuk 
+mendeteksi kemiripan dan plagiasi pada dokumen laporan kerja magang memiliki 
+keakurasian selisih 1.39% dari aplikasi pengujian yang sudah menggunakan metode pengecekan plagiasi yang lebih optima

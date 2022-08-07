@@ -111,4 +111,14 @@ class AuthController extends Controller
             'data' => $user
         ], Response::HTTP_OK);
     }
+    public function list_user(Request $request)
+    {
+ 
+        $user = User::get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ], Response::HTTP_OK);
+    }
 }

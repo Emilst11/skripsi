@@ -23,7 +23,7 @@ const Items = (props) => {
                         <div className="flex gap-5 h-[80px] bg-[#232323] items-center px-5 mb-3 rounded-xl">
                             <div className={`rounded-full ${parseFloat(item.precentage) < 30 ? "bg-[#2FC58D]" : parseFloat(item.precentage) < 70 ? "bg-[#F7C934]" : " bg-[#F05E70]"} w-[10px] h-[10px]`}></div>
                             <p className="grow">{item.name_file}</p>
-                            <p className="gorw"><span className="text-[#535353]">Presentase :</span>{item.precentage}</p>
+                            <p className="gorw"><span className="text-[#535353]">Presentase :</span>{item.precentage}%</p>
                         </div>
                         )}
             </div>

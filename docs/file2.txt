@@ -1,0 +1,4 @@
+Dari hasil penelitian yang sudah dilakukan dan dijelaskan sebelumnya, data yang diujikan dengan menggunakan algoritma rabin karp dengan jumlah 10 data dan menghasilkan 
+nilai rata-rata presentase kemiripan pada setiap berkas yaitu sebesar 16.51%, hal tersebut 
+mengartikan bahwa dokumen laporan kerja magang tersebut rata-rata mahasiswa masih 
+dikategorikan plagiasi tingkat ringan atau rendah. Kemudian dalam pengujian akurasi

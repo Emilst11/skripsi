@@ -25,7 +25,6 @@ class FormUpload extends React.Component{
         try {
         axios.post('http://127.0.0.1:5000/api/uploader', formData)
         .then(res => {
-            const data = res.data
             const dbStore = {
                 period: this.state.periode,
                 year: this.state.years,
@@ -38,6 +37,7 @@ class FormUpload extends React.Component{
             } catch (error) {
                 console.log(error)
             }
+            window.location.reload()
         });
         }
         catch(error) {
@@ -51,19 +51,6 @@ class FormUpload extends React.Component{
         },() => {
             console.log(this.state.selectedFile)
         })
-    }
-
-    loadPage = () =>{
-        let token_auth = sessionStorage.getItem("token")
-        try{
-            axios.get('http://127.0.0.1:8000/api/auth/record/get-all?token=' + token_auth)
-            .then(res => {
-                this.setState({records : res.data})
-                console.log(this.state.records)
-            })
-        }catch (error){
-            console.error(error.message)
-        }
     }
 
     componentDidMount() {

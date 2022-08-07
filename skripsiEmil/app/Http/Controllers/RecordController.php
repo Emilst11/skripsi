@@ -40,7 +40,11 @@ class RecordController extends Controller
     public function get_all(Request $request)
     {
         $user = auth()->user();
-        $Record = Record::with('data','user')->where('id_user',$user->id)->get();
-        return $Record;
+        if($user->role == 'user'){
+                $Record = Record::with('data','user')->where('id_user',$user->id)->get();
+        } else{
+        $Record = Record::with('data','user')->get();
+        }
+                return $Record;
     }
 }

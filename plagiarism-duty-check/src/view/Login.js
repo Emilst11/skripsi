@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import "../styles/login.css"
 import axios from "axios";
@@ -9,15 +8,11 @@ const BASE_URL = "http://127.0.0.1:8000/api/auth/login"
 const Login = () => {
     const [email, setEmail] = useState('')
     const [pwd, setPwd] = useState('')
-
-    const load = () => {
-        sessionStorage.clear()
-    }
+    const [errMsg, setErrMsg] = useState('')
 
     const handlesubmit = (e) => {
         e.preventDefault()
-        try{
-            axios.post(BASE_URL, {"email" : email, "password": pwd})
+        axios.post(BASE_URL, {"email" : email, "password": pwd})
             .then(data => {
                 console.log(JSON.stringify(data))
                 if('access_token' in data['data']){
@@ -25,15 +20,25 @@ const Login = () => {
                 }
                 window.location.href = "/home";
             })
-
-        } catch (error) {
-            console.log(error)
-        }
+            .catch(err => {
+                if(!err.message){
+                    setErrMsg('No server response')
+                    setTimeout(() => {
+                        setErrMsg('')
+                    }, 2000)
+                }else{
+                    setErrMsg('Missing E-mail or Password')
+                    setTimeout(() => {
+                        setErrMsg('')
+                    }, 2000)
+                }
+                
+            })
     }
 
     return(
-        <div className="login" onLoad={load}>
-            <div className="bg-[#191919] absolute right-20 top-1/2 -translate-y-1/2 w-1/5 p-7 shadow-xl h-1/2 flex flex-col justify-between">
+        <div className="login">
+            <div className="bg-[#191919] absolute right-20 top-1/2 -translate-y-1/2 w-1/5 p-7 shadow-xl h-1/3 flex flex-col justify-between">
                 <div>
                     <h1 className="mb-5 tag">Login</h1>
                     <form onSubmit={handlesubmit}>
@@ -56,7 +61,7 @@ const Login = () => {
                             required/>
                         </div>
                         <div className="mb-5 flex justify-between items-center">
-                            <p></p>
+                            <p>{errMsg}</p>
                             <button type="submit" className="w-1/2 bg-[#2FC58D] py-3 rounded-xl">Login</button>
                         </div>
                     </form>

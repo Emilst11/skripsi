@@ -1,29 +1,18 @@
+import axios from "axios";
 import React, {useEffect, useState} from "react";
-import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
 
 const UserList = () => {
-    const [user, setUser] = useState([
-        {
-            id: 1,
-            name: "Emil Setiawan",
-            role: "User",
-            status: "Aktif"
-        },
-        {
-            id: 2,
-            name: "Admin",
-            role: "Administrator",
-            status: "Aktif"
-        },
-        {
-            id: 3,
-            name: "Jhon",
-            role: "User",
-            status: "Non Aktif"
-        }
-    ]
-    )
+    const [user, setUser] = useState()
+    const url_api = "http://127.0.0.1:8000/api/auth/list-user?token="
+
+    useEffect(() => {
+        const token_auth = sessionStorage.getItem('token')
+        axios.get(url_api + token_auth)
+        .then(res => {
+            setUser(res.data)
+        })
+    }, [])
     return(
         <div>
             <div className="w-1/2 min-w-[800px] mx-auto py-10">

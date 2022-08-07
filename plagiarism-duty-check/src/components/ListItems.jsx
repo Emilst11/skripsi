@@ -9,7 +9,7 @@ const ListItems = ({data}) => {
             )
         }else{
             return(
-                data.map(item =>
+                data.reverse().map(item =>
                     <Items
                     key ={item.id}
                     record={item}
