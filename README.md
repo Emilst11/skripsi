@@ -6,7 +6,13 @@ Pengecekan plagiarismenya sendiri berada pada lingkupan kelas yaitu pengecekan t
 
 ## API
 API flask url Post
-<http://127.0.0.1:5000/api/uploader>
+<http://127.0.0.1:5000/api/>
+route API = python > myapiapp.py
+
+API Database
+<http://127.0.0.1:8000/api/auth/>
+
+route API = skripsiEmil > routes > api.php
 
 ## Figma
 <https://www.figma.com/file/uAUOzqwvWXIhog6xH3V7GV/Skripsi?node-id=0%3A1>
@@ -14,9 +20,3 @@ API flask url Post
 ## Must Install
 1. React-router-dom
 2. axios
-
-## Updates
-1. All routes
-
-## Next Objectives
-1. Search params react routing

@@ -25,19 +25,19 @@ class FormUpload extends React.Component{
         try {
         axios.post('http://127.0.0.1:5000/api/uploader', formData)
         .then(res => {
+            let record = res.data
             const dbStore = {
                 period: this.state.periode,
                 year: this.state.years,
-                store_data: res.data
+                store_data: record
             }
             console.log(JSON.stringify(dbStore))
-            try{
-                axios.post('http://127.0.0.1:8000/api/auth/record/store?token='+token_auth, dbStore)
-                .then(console.log("Berhasil"))
-            } catch (error) {
-                console.log(error)
-            }
-            window.location.reload()
+            axios.post('http://127.0.0.1:8000/api/auth/record/store?token='+token_auth, dbStore)
+            .then(() => {
+                console.log("Berhasil")
+                window.location.reload()
+            })
+            .catch(console.error)
         });
         }
         catch(error) {
