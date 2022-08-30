@@ -1,5 +1,5 @@
 # Introduction
-Repository ini adalah project skripsi saya yang mana pada project ini saya membuat aplikasi pengecekan plagiarisme menggunakan algoritma rabin karp dan akan diterapkan pada platform website
+TextPlag merupakan sebuah aplikasi pengecekan plagiasi pada laporan kerja magang mahasiswa, terutama mahasiswa kampus Institut Teknologi PLN Jakarta Barat di program studi S1 Teknik Informatika. Aplikasi ini dibuat karena dapat ditemukan kasus tidak sedikit mahasiswa melakukan plagiasi pada penulisan laporan kerja magang, dan laporan kerja magang tersebut akan diserahkan pada jurusan sebagai syarat kelulusan pada mata kuliah magang dan syarat kelulusan pada program studi S1 Teknik Informatika di Institut Teknologi PLN, hal inilah yang menjadi alasan mengapa aplikasi ini dibuat dan dikembangkan. Aplikasi ini menggunakan metode Algoritma Rabin-Karp sebagai metode pengecekan plagiasi antar dokumen dan menggunakan Regex dalam mengotomasi pemotongan berkas yang diambil dari BAB 1 hingga BAB 5 saja
 
 ## Lingkupan
 Pengecekan plagiarismenya sendiri berada pada lingkupan kelas yaitu pengecekan tugas individu siswa dalam lingkup kelas saja
