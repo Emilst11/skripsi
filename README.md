@@ -18,5 +18,14 @@ route API = skripsiEmil > routes > api.php
 <https://www.figma.com/file/uAUOzqwvWXIhog6xH3V7GV/Skripsi?node-id=0%3A1>
 
 ## Must Install
+
+In react
 1. React-router-dom
 2. axios
+
+In python
+1. NLTK
+2. flask
+3. CORS
+4. zipfile
+5. flask caching

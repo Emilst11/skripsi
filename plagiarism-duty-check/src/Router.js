@@ -5,6 +5,8 @@ import Register from "./view/Register"
 import Home from "./view/Home"
 import UserLists from "./view/UserLists"
 import Navbar from "./components/Navbar"
+import About from "./view/About"
+import Help from "./view/Help"
 import axios from "axios"
 
 const URL_AUTH = "http://127.0.0.1:8000/api/auth/me?token="
@@ -34,6 +36,8 @@ const Router = () => {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/user" element={<UserLists/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/help" element={<Help/>}/>
             </Routes>
         </div>
     )

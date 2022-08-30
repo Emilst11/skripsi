@@ -12,11 +12,11 @@ const Navbar = ( { data } ) => {
         },
         {
             nav: "About",
-            action: "/home"
+            action: "/about"
         },
         {
             nav: "Help",
-            action: "/home"
+            action: "/help"
         },
         {
             nav: "User",
