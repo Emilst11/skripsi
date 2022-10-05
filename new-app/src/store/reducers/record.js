@@ -1,6 +1,7 @@
 const initialState = {
     datas: [],
-    record_python: []
+    record_python: [],
+    user_list: []
 }
 
 const records = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const records = (state = initialState, action) => {
             return{
                 ...state,
                 record_python: payload
+            }
+        case 'SUCCESS_GET_USERS':
+            return{
+                ...state,
+                user_list: payload
             }
         default:
             return state

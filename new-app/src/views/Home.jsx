@@ -17,7 +17,6 @@ const Home = () => {
     const [light, setLight] = useState(0)
     const dispatch = useDispatch()
     const { datas } = useSelector(state => state.records)
-    const data = new FormData()
 
     const countingMax = (rec) => {
         let hard = 0
@@ -31,18 +30,17 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getRecord())
-        const interval = setTimeout(() => {
-            countingMax(datas)
-        }, 2000)
-        return () => clearInterval(interval)
     }, [])
+    
+    useEffect(() => {
+        countingMax(datas)
+    }, [datas])
     const handleSumbit = e => {
         e.preventDefault()
         const forms = {
             periods, date, file
         }
-        data.append('file', file[0])
-        dispatch(uploadPy(data))
+        dispatch(uploadPy(file))
         setPop(false)
         setFile([])
     }
@@ -81,9 +79,9 @@ const Home = () => {
                                 <input type="text" id="date" name="year" value={date} onChange={(e) => setDate(e.target.value)}/>
                             </div>
                             <div className="form-input">
-                                <label htmlFor="upload">Upload folder</label>
-                                <input type="file" id="upload" className="upload" value={file} name='file' onChange={(e) => setFile([e.target.value])}/>
-                                <label htmlFor="upload" className="upload-box">Choose file here</label>
+                                <label htmlFor="file">Upload folder</label>
+                                <input type="file" id="file" className="upload" value={file} name='file' onChange={(e) => setFile([e.target.value])}/>
+                                <label htmlFor="file" className="upload-box">Choose file here</label>
                             </div>
                             <p className="files">{file}</p>
                             <button className="submit">Submit</button>
@@ -97,7 +95,7 @@ const Home = () => {
                         datas.map((item, index) => 
                             <RecordList key={index} data={item}/>
                         )
-                    ) : <EmptyList/>
+                    ) : (<EmptyList/>)
                 }
             </div>
         </MainLayout>

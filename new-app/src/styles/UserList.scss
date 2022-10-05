@@ -1,0 +1,16 @@
+.container-box{
+    display: grid;
+    grid-template-columns: 30px repeat(3, 1fr) 50px;
+    font-size: 1.3rem;
+    margin-bottom: 1.4rem;
+    padding: 20px;
+    background-color: #232323;
+    border-radius: 10px;
+    border-left: 5px solid #909090;
+    grid-gap: 1rem;
+    .active{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+}

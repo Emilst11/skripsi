@@ -97,19 +97,11 @@ record = []
 
 def processing():
     files = filecutting.runfilecutting()
-    # current_dir = dirname(__file__)
-    # files_entries = os.listdir("./docs/txt/")
     i = 0
     while i < len(files)-1:
         data = []
         j = i + 1
         while j < len(files):
-            # path_files = '../docs/txt/' + files_entries[i]
-            # path_files1 = '../docs/txt/' + files_entries[j]
-            # checker = PlagiarismChecker(
-            #     join(current_dir, path_files),
-            #     join(current_dir, path_files1)
-            # )
             checker = PlagiarismChecker(
                 join(files[i]['text']),
                 join(files[j]['text'])
@@ -120,19 +112,6 @@ def processing():
             }
             data.append(temp)
             j += 1
-            # try:
-            #     checker = PlagiarismChecker(
-            #         join(current_dir, path_files),
-            #         join(current_dir, path_files1)
-            #     )
-            #     temp = {
-            #         "compared": files_entries[j],
-            #         "precentage": '{:6.2f}%'.format(checker.get_rate())
-            #     }
-            #     data.append(temp)
-            #     j += 1
-            # except FileNotFoundError:
-            #     j += 1
         record.append({
             "iteration" : i+1,
             "document": files[i]['name'],

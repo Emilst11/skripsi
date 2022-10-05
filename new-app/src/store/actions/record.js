@@ -15,3 +15,8 @@ export const uploadDb = (data) => {
         payload: data
     }
 }
+export const getUserList = () => {
+    return{
+        type: 'GET_USER_LIST'
+    }
+}

@@ -27,12 +27,12 @@ def main():
 @app.route('/api/uploader', methods=['POST'])
 def uploader():
     file = request.files['file']
-    if file:
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+    # if file:
+    #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
     
     items = os.listdir(UPLOAD_FOLDER)
 
-    with zipfile.ZipFile(UPLOAD_FOLDER + items[0], "r") as zip_ref:
+    with zipfile.ZipFile(file, "r") as zip_ref:
             zip_ref.extractall("../docs/words")
             records = solution.processing()
         
