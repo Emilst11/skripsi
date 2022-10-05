@@ -1,0 +1,53 @@
+.sidebar{
+    position: fixed;
+    left: 0;
+    top: 80px;
+    padding: 0rem 0rem 2rem 5rem;
+    width: 200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-item{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        .items{
+            display: block;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: .3s;
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            &:hover{
+                background-color: #fff;
+                color: #191919;
+            }
+        }
+        .active{
+            background-color: #fff;
+            color: #191919;
+            border-radius: 10px;
+        }
+    }
+    .logout{
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 1rem 0;
+        cursor: pointer;
+        transition: .3s;
+        background-color: #E33564;
+        border-radius: 10px;
+        span{
+            margin-left: 1rem;
+        }
+    }
+}

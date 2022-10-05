@@ -70,7 +70,7 @@ class PlagiarismChecker:
 
 
 def filecleaning():
-    path_load = "./docs/words/"
+    path_load = "../docs/words/"
     file_load = os.listdir(path_load)
 
     path_save = "./docs/txt/"

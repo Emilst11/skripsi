@@ -16,13 +16,9 @@ app = Flask (__name__)
 app.config.from_mapping(config)
 
 CORS(app)
-UPLOAD_FOLDER = 'python/upload_zip/'
+UPLOAD_FOLDER = 'upload_zip/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-TXT_FOLDER = "docs/txt/"
-list_txt = os.listdir(TXT_FOLDER)
-WORD_FOLDER = "docs/words/"
-list_words = os.listdir(WORD_FOLDER)
 
 @app.route('/')
 def main():
@@ -30,8 +26,6 @@ def main():
 
 @app.route('/api/uploader', methods=['POST'])
 def uploader():
-    period = request.form['period']
-    year = request.form['year']
     file = request.files['file']
     if file:
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
@@ -39,28 +33,13 @@ def uploader():
     items = os.listdir(UPLOAD_FOLDER)
 
     with zipfile.ZipFile(UPLOAD_FOLDER + items[0], "r") as zip_ref:
-            zip_ref.extractall("docs/words")
+            zip_ref.extractall("../docs/words")
             records = solution.processing()
         
     for x in items:
         os.remove(UPLOAD_FOLDER + x)
         
     return jsonify(record = records)
-    # try:
-    #     with zipfile.ZipFile(UPLOAD_FOLDER + items[0], "r") as zip_ref:
-    #         zip_ref.extractall("docs/words")
-        
-    #     for x in items:
-    #         os.remove(UPLOAD_FOLDER + x)
-            
-    #     records = solution.processing()
-    #     return jsonify(period, year, records)
-
-    # except IndexError:
-    #     records = "No file extract"
-    #     solution.filecleaning()
-    #     return jsonify(period, year, records)
-
     
 if __name__ == '__main__':
     app.run(debug = True)

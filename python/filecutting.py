@@ -5,11 +5,11 @@ import docx2txt
 import re
 
 data_text = []
-file_load = os.listdir("./docs/words/")
-path_load = "./docs/words/"
+file_load = os.listdir("../docs/words/")
+path_load = "../docs/words/"
 
-file_save = os.listdir("./docs/txt/")
-path_save = "./docs/txt/"
+file_save = os.listdir("../docs/txt/")
+path_save = "../docs/txt/"
 
 def files_name(name):
     split_name = name.split("/")

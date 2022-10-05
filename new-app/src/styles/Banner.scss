@@ -1,0 +1,16 @@
+.banners{
+    flex: 1 0 200px;
+    border: 2px solid #272727;
+    padding: 20px;
+    border-radius: 10px;
+    h1{
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin: 0;
+    }
+    h2{
+        color: #909090;
+        font-weight: 400;
+        margin: 0;
+    }
+}
