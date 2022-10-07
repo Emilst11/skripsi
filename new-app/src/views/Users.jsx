@@ -15,7 +15,7 @@ const Users = () => {
     return(
         <MainLayout>
             {user_list && 
-                user_list.data.map((item, index) => 
+                user_list?.data?.map((item, index) => 
                     <UserList key={index} number={index} data={item}/>
                 )
             }
