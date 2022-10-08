@@ -4,7 +4,7 @@ Textplag adalah sebuah aplikasi pengecekan plagiasi pada laporan kerja magang ma
 
 ## Tampilan
 
-![comparation](Porto Skripsi.png)
+![comparation](Porto_Skripsi.png)
 
 Tampilan pada aplikasi ini sudah dilakukan rework dengan desain yang baru dan beberapa fungsi yang telah dimanfaatkan dengan baik, adapun yang telah digunakan pada rework tampilan ini dengan menggunakan React.js yaitu:
 
